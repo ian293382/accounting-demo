@@ -14,18 +14,15 @@
         {% if groups %}
           {% for group in groups %}
             <div class="col-md-4">
-              <a href="{% url 'group:detail' group.id %}" class="text-decoration-none text-dark">
+              <a href="{% url 'group:detail' group.id%}" class="text-decoration-none text-dark">
                 <div class="card mb-4">
                     <h5 class="card-title">{{ group.group_name }}</h5>
                     <p class="card-text text-muted">{{ group.created_at }}</p>
                     <div class="card-body">
                         <a href="{% url 'group:edit' group.id %}" class="btn btn-primary mt-2 px-4 py-2 font-weight-bold rounded-lg">Edit</a>
                     
-                        <form action="{% url 'group:delete' group.id %}" method="post">
-                            {% csrf_token %}
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        <a href="{% url 'group:delete' group.id %}" class="btn btn-primary mt-2 px-4 py-2 font-weight-bold rounded-lg">Delete</a>
+                    </div>
                 </div>
               </a>
             </div>

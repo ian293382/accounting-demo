@@ -22,10 +22,9 @@ def groups(request):
 def detail(request, pk):
     group = get_object_or_404(Group, pk=pk, created_by=request.user)
 
-    return render(request, 'group/detail.html',{
+    return render(request, 'group/detail.html', {
         'group': group
     })
-    
 
 
 
@@ -61,7 +60,7 @@ def edit_group(request, pk):
         if form.is_valid():
             form.save()
 
-            return redirect('group:groups', pk=group.id)
+            return redirect('/groups', pk=group.id)
         
     else:
         form = EditGroupForm(instance=group)
