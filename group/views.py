@@ -8,7 +8,7 @@ from .models import Group
 
 def groups(request):
 
-    groups = Group.objects.all()
+    groups = Group.objects.all().order_by('-weight')
 
 
     return render(request, 'group/groups.html',{
