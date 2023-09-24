@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from .forms import SignupForm
+from .forms import SignupForm 
 
 # Create your views here.
 def signup(request):
@@ -17,4 +17,3 @@ def signup(request):
     return render(request, 'user/signup.html',{
         'form': form
     })
-      
