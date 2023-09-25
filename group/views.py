@@ -6,6 +6,8 @@ from .form import EditGroupForm,NewGroupForm
 
 from .models import Group
 
+from financialtrack.models import FinancialRecord,Tag
+
 def groups(request):
 
     groups = Group.objects.all().order_by('-weight')
@@ -22,8 +24,13 @@ def groups(request):
 def detail(request, pk):
     group = get_object_or_404(Group, pk=pk, created_by=request.user)
 
+    financial_records = FinancialRecord.objects.filter(group=group)
+    tag = Tag.objects.filter(records__group=group)
+
     return render(request, 'group/detail.html', {
-        'group': group
+        'group': group,
+        'financial_records': financial_records,
+        'tag': tag,
     })
 
 
@@ -76,3 +83,5 @@ def delete_group(request, pk):
     group.delete()
 
     return redirect('group:groups')
+
+

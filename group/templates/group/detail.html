@@ -3,6 +3,28 @@
 {% block title %}{{ Item.name }}{% endblock %}
 
 {% block content %}
-    This is Deatail page
+
+<div class="col-md-12">
+    <div class="row">
+  
+        <div class="col-md-4">
+          <a href="{% url 'group:detail' group.id%}" class="text-decoration-none text-dark">
+            <div class="card mb-4">
+                <div class="card-body">
+
+                        <!-- Create New Tag Link -->
+                <a href="{% url 'group:new_tag' group.id %}" class="btn btn-primary mt-2 px-4 py-2 font-weight-bold rounded-lg">创建新标签</a>
+
+                <!-- Create New Financial Record Link -->
+                <a href="{% url 'group:new_record' group.id %}" class="btn btn-success mt-2 px-4 py-2 font-weight-bold rounded-lg">创建新财务记录</a>
+                            
+                </div>
+            </div>
+          </a>
+        </div>
+
+    </div>
+  </div>
+
 
 {% endblock %}
